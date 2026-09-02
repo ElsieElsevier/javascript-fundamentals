@@ -8,9 +8,9 @@
 /** EXERCISE 1: THE COMMS STATION CHECK **/
 
 const stationPingsMs = {
-	tychoStation: 42,
-	ceresStation: 185,
-	baseCidonia: 310,
+    tychoStation: 42,
+    ceresStation: 185,
+    baseCidonia: 310,
 };
 
 /*
@@ -19,13 +19,28 @@ const stationPingsMs = {
     "Connection to [stationKey] latency is: [ping value]ms."
 */
 
+for (let stationKey in stationPingsMs) { // For...In loops because we are iterating over an object with key-value pairs
+
+    let pingValues = stationPingsMs[stationKey] // Need to declare and initialize a variable for the value of the key pair
+    console.log(`Connection to ${[stationKey]} latency is: ${pingValues}ms.`)
+
+}
+
 /** EXERCISE 2: WEAPONS INVENTORY VERIFICATION **/
 
 const pdcAmmoLocker = {
-	bayOneRails: 400,
-	bayTwoRails: 150,
-	bridgeDefenses: 0,
+    bayOneRails: 400,
+    bayTwoRails: 150,
+    bridgeDefenses: 0,
 };
+
+let ammoLockerArray = Object.keys(pdcAmmoLocker); // Calling the keys method of the object Object to create an array
+
+for (ammoLockerKey of ammoLockerArray) { // Use For...of loops because iterating over an array
+    if (pdcAmmoLocker[ammoLockerKey] === 0) { 
+        console.log(`CRITICAL DEPLETION: ${[ammoLockerKey]} ammo is completely empty!`)
+    }
+}
 
 /*
     TODO: Use 'Object.keys()' to extract an array of all keys from 'pdcAmmoLocker'.
