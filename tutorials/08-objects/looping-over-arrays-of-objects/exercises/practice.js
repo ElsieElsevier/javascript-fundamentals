@@ -13,11 +13,13 @@ const atmosphericScrubbers = [
 	{ zone: "Crew Quarters", filterLifePercent: 14 },
 ];
 
-for (let scrubbers of atmosphericScrubbers) {
-    if (scrubbers.filterLifePercent < 40) {
-        console.log(`MAINTENANCE REQ: ${scrubbers.zone} filter core is critically low at ${scrubbers.filterLifePercent}%!`);
+for (atmosphericScrubber of atmosphericScrubbers) { // Notice that the array consists of objects for its elements
+                                                    // Practicing naming convention of plural for the array, and singular for the loop variable
+    if (atmosphericScrubber.filterLifePercent < 40) { // We can use dot notation because we're calling the attribute of the array object.
+        console.log(`MAINTENANCE REQ: ${atmosphericScrubber.zone} filter core is critically low at ${atmosphericScrubber.filterLifePercent}%!`)
     }
 }
+
 
 /*
     TODO: Use a 'for...of' loop to scan through the 'atmosphericScrubbers' array.
@@ -34,14 +36,19 @@ const targetDrones = [
 	{ designation: "Drone-Gamma", threatScore: 7 },
 ];
 
-let totalThreatScore = 0;
+let threatScoreSum = 0; // Declaring and initiating the counter
 
-for (let i = 0; i < targetDrones.length; i++) {
-    totalThreatScore += targetDrones[i].threatScore;
-}
 
-const average = totalThreatScore / targetDrones.length;
-console.log(`Target grid composite average threat rating: ${average}`);
+for (let i = 0; i < targetDrones.length ; i++ ) { // Using the length property of the array shows up how many objects are inside
+    threatScoreSum += targetDrones[i].threatScore // Using += means to add the current value to the existing value
+    // Because we are iterating over the array using the loop variable i, each i value is the loop number so i = 0, means the first loop
+    // We have to use bracket notation with the array and specify which loop using i, so in loop 0, it takes threatScore of 4 and adds it to 0
+    // then in i = 1, the second loop, it takes the threatScore of 9 and adds it to 4
+    console.log(threatScoreSum);
+};
+
+const threatScoreAverage = threatScoreSum / targetDrones.length; // Since we only calculate this value once, we should use const instead of let due to immutability
+console.log(`Target grid composite average threat rating: ${threatScoreAverage}`)
 
 /*
     TODO: Write a standard 'for' loop using index tracking counters ('i') to scan the list.
