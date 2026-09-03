@@ -13,6 +13,12 @@ const atmosphericScrubbers = [
 	{ zone: "Crew Quarters", filterLifePercent: 14 },
 ];
 
+for (let scrubbers of atmosphericScrubbers) {
+    if (scrubbers.filterLifePercent < 40) {
+        console.log(`MAINTENANCE REQ: ${scrubbers.zone} filter core is critically low at ${scrubbers.filterLifePercent}%!`);
+    }
+}
+
 /*
     TODO: Use a 'for...of' loop to scan through the 'atmosphericScrubbers' array.
     Inside the loop, check if a scrubber's 'filterLifePercent' is less than 40.
@@ -27,6 +33,15 @@ const targetDrones = [
 	{ designation: "Drone-Beta", threatScore: 9 },
 	{ designation: "Drone-Gamma", threatScore: 7 },
 ];
+
+let totalThreatScore = 0;
+
+for (let i = 0; i < targetDrones.length; i++) {
+    totalThreatScore += targetDrones[i].threatScore;
+}
+
+const average = totalThreatScore / targetDrones.length;
+console.log(`Target grid composite average threat rating: ${average}`);
 
 /*
     TODO: Write a standard 'for' loop using index tracking counters ('i') to scan the list.
